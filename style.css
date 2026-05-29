@@ -763,6 +763,18 @@ h2 i, h3 i {
 }
 
 @media (max-width: 768px) {
+    .hero-badge-win{
+        display: none;
+    }
+    
+
+    .hero-badge{
+        margin-bottom:0.5rem  ;
+        font-size: 0.65rem;
+    }
+    .meta{
+        font-size: 0.7rem;
+    }
 
     .resumo-card{
             padding: 1rem;
@@ -954,7 +966,7 @@ h2 i, h3 i {
         padding: 2rem 1rem;
     }
     .hero h1 {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
     .hero p {
         font-size: 0.9rem;
