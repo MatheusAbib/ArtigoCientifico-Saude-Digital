@@ -8,8 +8,10 @@ if (langSelectOriginal) langSelectOriginal.value = currentLang;
 if (langSelectFixed) langSelectFixed.value = currentLang;
 
 const translations = {
+
     pt: {
         logo: "Chatbots na Saúde Digital",
+        heroBadge: "Artigo aceito na revista acadêmica da FATEC Itapetininga",
         nav: {
             resumo: "Resumo",
             introducao: "Introdução",
@@ -45,7 +47,9 @@ const translations = {
             citarABNT: "Citar ABNT",
             citarAPA: "Citar APA",
             tema: "Tema",
-            abrirPDF: "Abrir PDF"
+            abrirPDF: "Abrir PDF",
+            cartaAceite: "Carta de Aceite"
+
         },
         footer: {
             autores: "Autores",
@@ -73,6 +77,7 @@ const translations = {
     },
     en: {
         logo: "Chatbots in Digital Health",
+        heroBadge: "Article accepted by the academic journal of FATEC Itapetininga.",
         nav: {
             resumo: "Abstract",
             introducao: "Introduction",
@@ -108,7 +113,8 @@ const translations = {
             citarABNT: "Cite ABNT",
             citarAPA: "Cite APA",
             tema: "Theme",
-            abrirPDF: "Open PDF"
+            abrirPDF: "Open PDF",
+            cartaAceite: "Acceptance Letter"
         },
         footer: {
             autores: "Authors",
@@ -136,6 +142,7 @@ const translations = {
     },
    es: {
     logo: "Chatbots en Salud Digital",
+    heroBadge: "Artículo aceptado por la revista académica de FATEC Itapetininga",
     nav: {
         resumo: "Resumen",
         introducao: "Introducción",
@@ -171,7 +178,8 @@ const translations = {
         citarABNT: "Citar ABNT",
         citarAPA: "Citar APA",
         tema: "Tema",
-        abrirPDF: "Abrir PDF"
+        abrirPDF: "Abrir PDF",
+        cartaAceite: "Carta de Aceptación"
     },
     footer: {
         autores: "Autores",
@@ -487,6 +495,7 @@ const fullContent = {
 
 en: {
     logo: "Chatbots in Digital Health",
+    heroBadge: "Article accepted by the academic journal of FATEC Itapetininga.",
     nav: {
         resumo: "Abstract",
         introducao: "Introduction",
@@ -828,6 +837,7 @@ en: {
 
 es: {
     logo: "Chatbots en Salud Digital",
+    heroBadge: "Artículo aceptado por la revista académica de FATEC Itapetininga",
     nav: {
         resumo: "Resumen",
         introducao: "Introducción",
@@ -1251,6 +1261,18 @@ document.querySelectorAll('.footer-section h3')[3].innerHTML = `<i class="pi pi-
     if (referencesTitle) {
         referencesTitle.innerHTML = `<i class="fas fa-book"></i> ${t.references.title}`;
     }
+    const openLetterBtn = document.getElementById('openAcceptanceLetterBtn');
+    if (openLetterBtn) {
+        openLetterBtn.innerHTML = `<i class="pi pi-envelope"></i> ${t.buttons.cartaAceite}`;
+    }
+    const footerLetterBtn = document.getElementById('openAcceptanceLetterFooterBtn');
+    if (footerLetterBtn) {
+        footerLetterBtn.innerHTML = `<i class="pi pi-envelope"></i> ${t.buttons.cartaAceite}`;
+    }
+    const heroBadgeText = document.getElementById('heroBadgeText');
+if (heroBadgeText) {
+    heroBadgeText.innerText = t.heroBadge;
+}
 }
 
 function updatePaginationTexts(lang) {
@@ -1375,6 +1397,21 @@ function toggleReferences() {
         referencesContent.style.display = 'none';
         toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
     }
+}
+
+const openAcceptanceLetter = () => {
+    window.open('./DECLARACAO_ACEITE.pdf', '_blank');
+    showToast('📄 Abrindo carta de aceite...', 'info');
+};
+
+const acceptanceLetterBtn = document.getElementById('openAcceptanceLetterBtn');
+const acceptanceLetterFooterBtn = document.getElementById('openAcceptanceLetterFooterBtn');
+
+if (acceptanceLetterBtn) {
+    acceptanceLetterBtn.addEventListener('click', openAcceptanceLetter);
+}
+if (acceptanceLetterFooterBtn) {
+    acceptanceLetterFooterBtn.addEventListener('click', openAcceptanceLetter);
 }
 
 function updateTocActive() {

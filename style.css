@@ -50,9 +50,41 @@ body.dark {
     transition: background 0.2s;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #e8f0fec2 0%, #d4e4f79a 50%, #c6dcf162 100%);
+    background: linear-gradient(135deg, #e8f0fec2 0%, #d9e7f89a 50%, #d2e6f862 100%);
 }
 
+.hero-badge-win {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(250, 204, 21, 0.15);
+    backdrop-filter: blur(4px);
+    color: #b45309;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    float: right;
+    clear: both;
+}
+
+body.dark .hero-badge-win {
+    background: rgba(250, 204, 21, 0.08);
+    color: #fbbf24;
+    border: 1px solid rgba(250, 204, 21, 0.2);
+}
+
+.hero-badge-win i {
+    font-size: 0.75rem;
+}
+
+.hero-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
 body.dark .hero {
     background: linear-gradient(135deg, #0f1a2e 0%, #0a1220 50%, #050a14 100%);
 }
