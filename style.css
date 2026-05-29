@@ -371,6 +371,7 @@ body.dark .hero h1 {
 
 .article-body ul li {
     margin-bottom: 1.2rem;
+    text-align: justify;
 }
 
 .article-body ul li strong {
