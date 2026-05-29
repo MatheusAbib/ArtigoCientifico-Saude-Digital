@@ -360,6 +360,7 @@ body.dark .hero h1 {
     margin-bottom: 1.35rem;
     letter-spacing: .02em;
         text-indent: 1.75rem;
+    text-align: justify;
 
     line-height: 1.9;
 }
