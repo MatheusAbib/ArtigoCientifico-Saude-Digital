@@ -11,7 +11,7 @@ const translations = {
 
     pt: {
         logo: "Chatbots na Saúde Digital",
-        heroBadge: "Artigo aceito na revista acadêmica da FATEC Itapetininga",
+        heroBadge: "Aceito na revista acadêmica da FATEC Itapetininga",
         nav: {
             resumo: "Resumo",
             introducao: "Introdução",
@@ -77,7 +77,7 @@ const translations = {
     },
     en: {
         logo: "Chatbots in Digital Health",
-        heroBadge: "Article accepted by the academic journal of FATEC Itapetininga.",
+        heroBadge: "Accepted by the academic journal of FATEC Itapetininga.",
         nav: {
             resumo: "Abstract",
             introducao: "Introduction",
@@ -142,7 +142,7 @@ const translations = {
     },
    es: {
     logo: "Chatbots en Salud Digital",
-    heroBadge: "Artículo aceptado por la revista académica de FATEC Itapetininga",
+    heroBadge: "Aceptado por la revista académica de FATEC Itapetininga",
     nav: {
         resumo: "Resumen",
         introducao: "Introducción",
@@ -495,7 +495,7 @@ const fullContent = {
 
 en: {
     logo: "Chatbots in Digital Health",
-    heroBadge: "Article accepted by the academic journal of FATEC Itapetininga.",
+    heroBadge: "Accepted by the academic journal of FATEC Itapetininga.",
     nav: {
         resumo: "Abstract",
         introducao: "Introduction",
@@ -837,7 +837,7 @@ en: {
 
 es: {
     logo: "Chatbots en Salud Digital",
-    heroBadge: "Artículo aceptado por la revista académica de FATEC Itapetininga",
+    heroBadge: "Aceptado por la revista académica de FATEC Itapetininga",
     nav: {
         resumo: "Resumen",
         introducao: "Introducción",
