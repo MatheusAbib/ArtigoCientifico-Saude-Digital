@@ -1220,7 +1220,7 @@ authors[2].innerHTML = `<i class="fas fa-user"></i> ${t.byline.autor3}`;
         readingTimeSpan.innerHTML = `<i class="pi pi-clock"></i> <span id="estimatedReadingTime">${t.byline.tempoLeitura}</span> ${t.byline.minLeitura}`;
     }
 
-    document.querySelector('.byline .meta span:last-child').innerHTML = `<i class="pi pi-building"></i> ${t.byline.instituicao}`;
+    // document.querySelector('.byline .meta span:last-child').innerHTML = `<i class="pi pi-building"></i> ${t.byline.instituicao}`;
     
     document.getElementById('citeABNT').innerHTML = `<i class="fas fa-quote-right"></i> ${t.buttons.citarABNT}`;
     document.getElementById('citeAPA').innerHTML = `<i class="pi pi-book"></i> ${t.buttons.citarAPA}`;
@@ -1415,59 +1415,37 @@ if (acceptanceLetterFooterBtn) {
 }
 
 function updateTocActive() {
-    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const sections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('.toc a, .mobile-nav-links a');
     
     if (sections.length === 0) return;
     
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    
-    let activeId = null;
+    let currentSection = '';
+    const scrollPosition = window.scrollY + 100;
     
     for (let i = 0; i < sections.length; i++) {
         const section = sections[i];
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top + scrollTop;
+        const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
         
-        const isActive = (
-            (scrollTop + 150 >= sectionTop && scrollTop + 150 < sectionBottom) ||
-            (scrollTop + windowHeight - 200 >= sectionTop && scrollTop + windowHeight - 200 < sectionBottom)
-        );
-        
-        if (isActive) {
-            activeId = section.id;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = section.getAttribute('id');
             break;
         }
     }
     
-    if (!activeId && scrollTop + windowHeight >= documentHeight - 100) {
-        activeId = sections[sections.length - 1].id;
-    }
-    
-    if (!activeId) {
-        for (let i = 0; i < sections.length; i++) {
-            const section = sections[i];
-            const sectionTop = section.offsetTop;
-            if (scrollTop + 150 >= sectionTop) {
-                activeId = section.id;
-            } else {
-                break;
-            }
-        }
+    if (!currentSection && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100) {
+        currentSection = sections[sections.length - 1].getAttribute('id');
     }
     
     links.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
-        if (href && href === `#${activeId}`) {
+        if (href && href === `#${currentSection}`) {
             link.classList.add('active');
         }
     });
 }
-
 
     function initProgressBar() {
         window.addEventListener('scroll', () => {
@@ -1627,7 +1605,6 @@ if (langSelectFixed) {
 renderFullArticle();
 initProgressBar();
 
-const debouncedUpdateToc = debounce(updateTocActive, 10);
-window.addEventListener('scroll', debouncedUpdateToc);
-window.addEventListener('resize', debouncedUpdateToc);
+window.addEventListener('scroll', updateTocActive);
+window.addEventListener('resize', updateTocActive);
 setTimeout(() => updateTocActive(), 150);
