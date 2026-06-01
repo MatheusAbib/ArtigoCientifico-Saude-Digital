@@ -57,7 +57,7 @@ body.dark {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(250, 204, 21, 0.15);
+    background: rgba(250, 204, 21, 0.20);
     backdrop-filter: blur(4px);
     color: #b45309;
     padding: 0.4rem 1rem;
@@ -372,6 +372,7 @@ body.dark .hero h1 {
 .article-body ul li {
     margin-bottom: 1.2rem;
     text-align: justify;
+
 }
 
 .article-body ul li strong {
@@ -386,7 +387,7 @@ body.dark .hero h1 {
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
-    margin: 2.5rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--border);
     letter-spacing: -0.01em;
@@ -771,15 +772,15 @@ h2 i, h3 i {
     
 
     .hero-badge{
-        margin-bottom:0.5rem  ;
-        font-size: 0.65rem;
+        margin-bottom:0.3rem  ;
     }
     .meta{
         font-size: 0.7rem;
+        margin-bottom:0.3rem  ;
     }
 
     .resumo-card{
-            padding: 1rem;
+            padding: 0.8rem;
             margin: 0;
 
     }
@@ -793,6 +794,10 @@ h2 i, h3 i {
         max-width: 95%;
         padding: 0.8rem 0rem 0.8rem 0px;
     }
+      .reading-time {
+        order: 1;
+        margin-left: 0;
+    }
     .container {
         max-width: 95%;
     }
@@ -803,6 +808,9 @@ h2 i, h3 i {
         position: static;
         width: 100%;
         flex: auto;
+    }
+    .toc{
+        margin-bottom: 0;
     }
     .toc ul {
         display: flex;
@@ -815,9 +823,9 @@ h2 i, h3 i {
     .toc a {
         white-space: nowrap;
     }
-    .byline {
-        flex-direction: column;
-        align-items: flex-start;
+  .byline {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .footer-content {
@@ -839,8 +847,10 @@ h2 i, h3 i {
         display: none;
     }
     .fixed-header .logo-area h4 {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
+
+    
     .references-grid {
         grid-template-columns: 1fr;
         gap: 0.8rem;
@@ -865,9 +875,21 @@ h2 i, h3 i {
         display: block;
     }
     
-    .top-bar {
-        justify-content: flex-end;
+.top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+}
+
+   .controls {
+        order: 2;
     }
+
+.controls .lang-select,
+.controls .btn-icon {
+    flex: 1;
+    text-align: center;
+}
     
     .mobile-nav {
         display: flex;
@@ -961,6 +983,16 @@ h2 i, h3 i {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
+
+    .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+        }
+
+        .action-buttons .btn-outline {
+            text-align: center;
+        }
 }
 
 @media (max-width: 480px) {
