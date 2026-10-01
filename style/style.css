@@ -892,7 +892,6 @@ h3 i {
     background: var(--card);
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 20px 60px var(--shadow-strong);
 }
 
 .pdf-modal-close {
@@ -1077,7 +1076,6 @@ h3 i {
         width: 280px;
         height: 100vh;
         background: var(--card);
-        box-shadow: -2px 0 20px var(--shadow-drawer);
         z-index: 1002;
         transition: right 0.3s ease-in-out;
         padding: 1.5rem;
@@ -1286,8 +1284,8 @@ h3 i {
     }
 
     .pdf-modal-content {
-        width: 95%;
-        height: 92%;
+        width: 98%;
+        height: 94%;
         border-radius: 0.6rem;
     }
 
