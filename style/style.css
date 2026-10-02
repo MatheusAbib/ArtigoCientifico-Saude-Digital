@@ -119,7 +119,7 @@ body {
     background: var(--badge-gold-bg);
     color: var(--badge-gold-text);
     padding: 0.3rem 0.8rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: 1px solid var(--badge-gold-border);
     font-weight: 500;
     font-size: 0.75rem;
@@ -142,7 +142,7 @@ body {
     padding: 0.35rem 0.9rem;
     background: var(--hero-gradient-4);
     color: var(--accent);
-    border-radius: 2rem;
+    border-radius: 1rem;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -219,7 +219,7 @@ body {
 .lang-select {
     background: none;
     border: 1.5px solid var(--border);
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.3rem 1rem;
     font-size: 0.8rem;
     cursor: pointer;
@@ -343,7 +343,7 @@ body {
 .fixed-header .btn-icon-small {
     background: none;
     border: 1.5px solid var(--border);
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
     cursor: pointer;
@@ -363,7 +363,7 @@ body {
     display: none;
     background: none;
     border: 1.5px solid var(--border);
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 0.9rem;
     font-size: 0.9rem;
     cursor: pointer;
@@ -486,7 +486,7 @@ body {
 .resumo-card {
     background: var(--accent-light);
     padding: 1.8rem;
-    border-radius: 1.2rem;
+    border-radius: 1rem;
     margin: 1.3rem 0;
     border-left: 5px solid var(--accent);
     transition: all 0.2s;
@@ -510,7 +510,7 @@ table {
     font-size: 0.9rem;
     font-family: 'Inter', sans-serif;
     background: var(--card);
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     overflow: hidden;
     transition: background 0.2s;
 }
@@ -547,7 +547,7 @@ th {
 .btn-outline {
     background: transparent;
     border: 1px solid var(--border);
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.45rem 1.2rem;
     font-size: 0.8rem;
     cursor: pointer;
@@ -590,7 +590,7 @@ th {
     gap: 6px;
     background: var(--accent-light);
     padding: 0.3rem 0.9rem;
-    border-radius: 30px;
+    border-radius: 1rem;
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--accent);
@@ -725,7 +725,7 @@ footer {
     background: var(--accent);
     color: var(--white);
     padding: 0.5rem 1rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     font-size: 0.8rem;
     opacity: 0;
     transition: opacity 0.2s;
@@ -758,7 +758,7 @@ h3 i {
     border: 1px solid var(--border);
     padding: 1rem;
     transition: all 0.2s ease;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -826,7 +826,7 @@ h3 i {
 .pagination-btn {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 0.5rem 1.2rem;
     font-size: 0.8rem;
     cursor: pointer;
@@ -1129,6 +1129,10 @@ h3 i {
 }
 
 @media (max-width: 768px) {
+     .resumo-card {
+        border-left: none;
+     }
+
     .authors{
         flex-direction: column;
     }
