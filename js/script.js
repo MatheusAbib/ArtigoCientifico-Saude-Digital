@@ -21,9 +21,7 @@ let currentReferencesPage = 1;
 let referencesItems = [];
 const referencesPerPage = 4;
 
-const langSelect = document.getElementById('langSelect');
 const langSelectFixed = document.getElementById('langSelectFixed');
-const themeToggle = document.getElementById('themeToggle');
 const themeToggleFixed = document.getElementById('themeToggleFixed');
 const fixedHeader = document.getElementById('fixedHeader');
 const progressBar = document.getElementById('progressBar');
@@ -35,6 +33,7 @@ const downloadPdfBtn = document.getElementById('downloadPdfBtn');
 const openLetterBtn = document.getElementById('openAcceptanceLetterBtn');
 const openLetterFooterBtn = document.getElementById('openAcceptanceLetterFooterBtn');
 const citeAPAFooterBtn = document.getElementById('citeAPAFooter');
+const downloadPdfFooterBtn = document.getElementById('downloadPdfFooterBtn');
 
 const menuToggleFixed = document.getElementById('menuToggleFixed');
 const menuCloseFixed = document.getElementById('menuCloseFixed');
@@ -45,14 +44,11 @@ const pdfModal = document.getElementById('pdfModal');
 const pdfModalIframe = document.getElementById('pdfModalIframe');
 const pdfModalClose = document.getElementById('pdfModalClose');
 
-const downloadPdfFooterBtn = document.getElementById('downloadPdfFooterBtn');
 const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
 
-if (langSelect) langSelect.value = currentLang;
 if (langSelectFixed) langSelectFixed.value = currentLang;
 
 const scrollThreshold = 100;
-
 let toastTimeout = null;
 
 function showToast(msg, type = 'success') {
@@ -61,16 +57,16 @@ function showToast(msg, type = 'success') {
     let icon = '';
     switch (type) {
         case 'success':
-            icon = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>';
+            icon = '<i class="pi pi-check-circle" style="margin-right: 8px;"></i>';
             break;
         case 'error':
-            icon = '<i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>';
+            icon = '<i class="pi pi-times-circle" style="margin-right: 8px;"></i>';
             break;
         case 'info':
-            icon = '<i class="fas fa-info-circle" style="margin-right: 8px;"></i>';
+            icon = '<i class="pi pi-info-circle" style="margin-right: 8px;"></i>';
             break;
         default:
-            icon = '<i class="fas fa-check-circle" style="margin-right: 8px;"></i>';
+            icon = '<i class="pi pi-check-circle" style="margin-right: 8px;"></i>';
     }
 
     toast.innerHTML = icon + msg;
@@ -178,60 +174,50 @@ function updateUITexts(lang) {
 
     const logoArea = document.querySelector('.logo-area h4');
     if (logoArea) logoArea.innerText = t.logo;
-    
+
     const heroBadge = document.querySelector('.hero-badge');
-    if (heroBadge) heroBadge.innerText = t.hero.badge;
+    if (heroBadge) heroBadge.innerHTML = `<i class="pi pi-file-edit"></i> ${t.hero.badge}`;
 
     const heroMetaHighlight = document.querySelector('.hero-meta-highlight');
     if (heroMetaHighlight) {
-        heroMetaHighlight.innerHTML = `<i class="fas fa-award"></i> ${t.hero.status}`;
+        heroMetaHighlight.innerHTML = `<i class="pi pi-trophy"></i> ${t.hero.status}`;
     }
 
     const heroMetaBtn = document.querySelector('.hero-meta-btn');
     if (heroMetaBtn) {
-        heroMetaBtn.innerHTML = `${t.hero.verRevista} <i class="fas fa-arrow-up-right-from-square"></i>`;
+        heroMetaBtn.innerHTML = `${t.hero.verRevista} <i class="pi pi-external-link"></i>`;
     }
 
     const footerBadgeBtn = document.querySelector('.footer-badge-btn');
     if (footerBadgeBtn) {
-        footerBadgeBtn.innerHTML = `${t.hero.verRevista} <i class="fas fa-arrow-up-right-from-square"></i>`;
+        footerBadgeBtn.innerHTML = `${t.hero.verRevista} <i class="pi pi-external-link"></i>`;
     }
 
-    const fixedHeaderTitle = document.getElementById('fixedHeaderTitle');
-    if (fixedHeaderTitle) {
-        fixedHeaderTitle.innerText = t.hero.titulo.replace('<br>', ' ');
-    }
-
-    const fixedLinks = document.querySelectorAll('.fixed-header .nav-links-fixed a');
-    const fixedKeys = ['resumo', 'introducao', 'metodologia', 'referencial', 'resultados', 'consideracoes', 'referencias'];
-    fixedLinks.forEach((link, i) => {
-        if (fixedKeys[i]) link.innerText = t.nav[fixedKeys[i]];
+    const fixedHeaderLinks = document.querySelectorAll('.fixed-header .nav-links a');
+    const navKeys = ['resumo', 'introducao', 'metodologia', 'referencial', 'resultados', 'consideracoes', 'referencias'];
+    fixedHeaderLinks.forEach((link, i) => {
+        if (navKeys[i]) link.innerText = t.nav[navKeys[i]];
     });
 
     const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
     mobileLinks.forEach((link, i) => {
-        if (fixedKeys[i]) link.innerText = t.nav[fixedKeys[i]];
+        if (navKeys[i]) link.innerText = t.nav[navKeys[i]];
     });
 
     const mobileNavTitle = document.querySelector('.mobile-nav-header h4');
     if (mobileNavTitle) mobileNavTitle.innerText = t.toc.titulo;
 
-    const topBarLinks = document.querySelectorAll('.top-bar .nav-links a');
-    topBarLinks.forEach((link, i) => {
-        if (fixedKeys[i]) link.innerText = t.nav[fixedKeys[i]];
-    });
-
     const heroH1 = document.querySelector('.hero h1');
     if (heroH1) heroH1.innerHTML = t.hero.titulo;
 
-    const heroP = document.querySelector('.hero p');
-    if (heroP) heroP.innerHTML = t.hero.subtitulo;
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) heroSubtitle.innerHTML = t.hero.subtitulo;
 
     const authors = document.querySelectorAll('.byline .authors span');
     const authorKeys = ['autor1', 'autor2', 'autor3'];
     authors.forEach((span, i) => {
         if (authorKeys[i]) {
-            span.innerHTML = `<i class="fas fa-user"></i> ${t.byline[authorKeys[i]]}`;
+            span.innerHTML = `<i class="pi pi-user"></i> ${t.byline[authorKeys[i]]}`;
         }
     });
 
@@ -245,44 +231,30 @@ function updateUITexts(lang) {
     });
 
     if (citeABNTBtn) {
-        citeABNTBtn.innerHTML = `<i class="fas fa-quote-right"></i> ${t.buttons.citarABNT}`;
+        citeABNTBtn.innerHTML = `<i class="pi pi-copy"></i> ${t.buttons.citarABNT}`;
     }
+
     if (citeAPABtn) {
         citeAPABtn.innerHTML = `<i class="pi pi-book"></i> ${t.buttons.citarAPA}`;
-    }
-    if (themeToggleFixed) {
-        const isDark = document.body.classList.contains('dark');
-        themeToggleFixed.innerHTML = `<i class="pi ${isDark ? 'pi-sun' : 'pi-moon'}"></i>`;
-        themeToggleFixed.title = t.buttons.tema;
-        themeToggleFixed.setAttribute('aria-label', t.buttons.tema);
     }
 
     const tocTitle = document.querySelector('.toc h3');
     if (tocTitle) tocTitle.innerHTML = `<i class="pi pi-list"></i> ${t.toc.titulo}`;
 
     const tocLinks = document.querySelectorAll('.toc ul li a');
-    const tocKeys = ['resumo', 'introducao', 'metodologia', 'referencial', 'resultados', 'consideracoes', 'referencias'];
-    const tocIcons = ['pi-file-pdf', 'pi-info-circle', 'pi-cog', 'pi-book', 'pi-chart-bar', 'pi-check-circle', 'pi-database'];
+    const tocIcons = ['pi-file-edit', 'pi-book', 'pi-cog', 'pi-bookmark', 'pi-chart-line', 'pi-check-circle', 'pi-database'];
     tocLinks.forEach((link, i) => {
-        if (tocKeys[i]) {
-            link.innerHTML = `<i class="pi ${tocIcons[i]}"></i> ${t.toc[tocKeys[i]]}`;
+        if (navKeys[i]) {
+            link.innerHTML = `<i class="pi ${tocIcons[i]}"></i> ${t.toc[navKeys[i]]}`;
         }
     });
 
     const footerH3 = document.querySelectorAll('.footer-section h3');
-    const footerKeys = ['autores', 'instituicao', 'links', 'compartilhe'];
-    const footerIcons = ['pi-users', 'pi-building', 'pi-link', 'pi-share-alt'];
+    const footerKeys = ['autores', 'instituicao', 'publicacao'];
+    const footerIcons = ['pi-users', 'pi-building', 'pi-share-alt'];
     footerH3.forEach((h3, i) => {
         if (footerKeys[i]) {
-            h3.innerHTML = `<i class="pi ${footerIcons[i]}"></i> ${t.footer[footerKeys[i]]}`;
-        }
-    });
-
-const footerLinks = document.querySelectorAll('.footer-links li a');
-const footerLinkKeys = ['resumoArtigo', 'metodologia', 'resultados', 'referencias', 'revistaPerspectiva'];
-    footerLinks.forEach((link, i) => {
-        if (footerLinkKeys[i]) {
-            link.innerHTML = `<i class="pi pi-arrow-right"></i> ${t.footer[footerLinkKeys[i]]}`;
+            h3.innerHTML = `<i class="pi ${footerIcons[i]}"></i> ${t.footer[footerKeys[i]] || t.footer.links}`;
         }
     });
 
@@ -292,21 +264,21 @@ const footerLinkKeys = ['resumoArtigo', 'metodologia', 'resultados', 'referencia
     }
 
     if (citeABNTFooterBtn) {
-        citeABNTFooterBtn.innerHTML = `<i class="fas fa-quote-right"></i> ${t.buttons.citarABNT}`;
+        citeABNTFooterBtn.innerHTML = `<i class="pi pi-copy"></i> ${t.buttons.citarABNT}`;
     }
 
     if (citeAPAFooterBtn) {
-    citeAPAFooterBtn.innerHTML = `<i class="pi pi-book"></i> ${t.buttons.citarAPA}`;
-}
+        citeAPAFooterBtn.innerHTML = `<i class="pi pi-book"></i> ${t.buttons.citarAPA}`;
+    }
 
     const footerCopyright = document.querySelector('.footer-copyright');
     if (footerCopyright) {
-        footerCopyright.innerHTML = `<i class="pi pi-copyright"></i> 2025 — ${t.footer.direitos}`;
+        footerCopyright.innerHTML = `<i class="pi pi-copyright"></i> <span>2025 — ${t.footer.direitos}</span>`;
     }
 
     const referencesTitle = document.querySelector('#referencias h2 span');
     if (referencesTitle) {
-        referencesTitle.innerHTML = `<i class="fas fa-book"></i> ${t.references.title}`;
+        referencesTitle.innerHTML = `<i class="pi pi-database"></i> ${t.references.title}`;
     }
 
     if (openLetterBtn) {
@@ -315,18 +287,16 @@ const footerLinkKeys = ['resumoArtigo', 'metodologia', 'resultados', 'referencia
     if (openLetterFooterBtn) {
         openLetterFooterBtn.innerHTML = `<i class="pi pi-envelope"></i> ${t.buttons.cartaAceite}`;
     }
-if (downloadPdfFooterBtn) {
-    downloadPdfFooterBtn.innerHTML = `<i class="pi pi-file-pdf"></i> ${t.buttons.abrirPDF}`;
-}
-if (citeAPAFooterBtn) {
-    citeAPAFooterBtn.innerHTML = `<i class="pi pi-book"></i> ${t.buttons.citarAPA}`;
+    if (downloadPdfFooterBtn) {
+        downloadPdfFooterBtn.innerHTML = `<i class="pi pi-file-pdf"></i> ${t.buttons.abrirPDF}`;
+    }
+
+    const footerBadgeText = document.getElementById('footerBadgeText');
+    if (footerBadgeText) {
+        footerBadgeText.innerText = t.hero.status;
+    }
 }
 
-const footerBadgeText = document.getElementById('footerBadgeText');
-if (footerBadgeText) {
-    footerBadgeText.innerText = t.hero.status;
-}
-    }
 function updatePaginationTexts(lang) {
     const t = translations[lang];
     const paginationInfo = document.querySelector('.pagination-info');
@@ -342,10 +312,10 @@ function updatePaginationTexts(lang) {
     const prevBtn = document.querySelector('.pagination-btn:first-child');
     const nextBtn = document.querySelector('.pagination-btn:last-child');
     if (prevBtn && !prevBtn.disabled) {
-        prevBtn.innerHTML = `<i class="fas fa-chevron-left"></i> ${t.references.previous}`;
+        prevBtn.innerHTML = `<i class="pi pi-chevron-left"></i> ${t.references.previous}`;
     }
     if (nextBtn && !nextBtn.disabled) {
-        nextBtn.innerHTML = `${t.references.next} <i class="fas fa-chevron-right"></i>`;
+        nextBtn.innerHTML = `${t.references.next} <i class="pi pi-chevron-right"></i>`;
     }
 }
 
@@ -357,16 +327,16 @@ function renderFullArticle() {
     if (!articleContainer) return;
 
     const html = `
-        <section id="resumo" class="resumo-card"><h2><i class="fas fa-file-lines"></i> ${titles.toc.resumo.toUpperCase()}</h2>${t.resumo}</section>
-        <section id="introducao"><h2>1. ${titles.toc.introducao.toUpperCase()}</h2>${t.introducao}</section>
-        <section id="metodologia"><h2>2. ${titles.toc.metodologia.toUpperCase()}</h2>${t.metodologia}</section>
-        <section id="referencial"><h2>3. ${titles.toc.referencial.toUpperCase()}</h2>${t.referencial}</section>
-        <section id="resultados"><h2>4. ${titles.toc.resultados.toUpperCase()}</h2>${t.resultados}</section>
-        <section id="consideracoes"><h2>5. ${titles.toc.consideracoes.toUpperCase()}</h2>${t.consideracoes}</section>
+        <section id="resumo" class="resumo-card"><h2><i class="pi pi-file-edit"></i> ${titles.toc.resumo.toUpperCase()}</h2>${t.resumo}</section>
+        <section id="introducao"><h2><i class="pi pi-book"></i> 1. ${titles.toc.introducao.toUpperCase()}</h2>${t.introducao}</section>
+        <section id="metodologia"><h2><i class="pi pi-cog"></i> 2. ${titles.toc.metodologia.toUpperCase()}</h2>${t.metodologia}</section>
+        <section id="referencial"><h2><i class="pi pi-bookmark"></i> 3. ${titles.toc.referencial.toUpperCase()}</h2>${t.referencial}</section>
+        <section id="resultados"><h2><i class="pi pi-chart-line"></i> 4. ${titles.toc.resultados.toUpperCase()}</h2>${t.resultados}</section>
+        <section id="consideracoes"><h2><i class="pi pi-check-circle"></i> 5. ${titles.toc.consideracoes.toUpperCase()}</h2>${t.consideracoes}</section>
         <section id="referencias">
             <h2 style="display: flex; align-items: center; justify-content: space-between; cursor: pointer;" onclick="toggleReferences()">
-                <span><i class="fas fa-book"></i> ${titles.references.title}</span>
-                <span id="referencesToggleIcon" style="font-size: 1.2rem;"><i class="fas fa-chevron-down"></i></span>
+                <span><i class="pi pi-database"></i> ${titles.references.title}</span>
+                <span id="referencesToggleIcon" style="font-size: 1.2rem;"><i class="pi pi-chevron-down"></i></span>
             </h2>
             <div id="referencesContent" style="display: none;">
                 <div id="referencesPaginationContainer"></div>
@@ -401,13 +371,13 @@ function renderReferencesPage() {
     const paginationHtml = `
         <div class="references-pagination">
             <button class="pagination-btn" onclick="changeReferencesPage(${currentReferencesPage - 1})" ${currentReferencesPage === 1 ? 'disabled' : ''}>
-                <i class="fas fa-chevron-left"></i> ${translations[currentLang].references.previous}
+                <i class="pi pi-chevron-left"></i> ${translations[currentLang].references.previous}
             </button>
             <span class="pagination-info" data-current="${currentReferencesPage}" data-total="${totalPages}" data-items="${referencesItems.length}">
                 ${translations[currentLang].references.page} ${currentReferencesPage} ${translations[currentLang].references.of} ${totalPages} (${referencesItems.length} ${translations[currentLang].references.references})
             </span>
             <button class="pagination-btn" onclick="changeReferencesPage(${currentReferencesPage + 1})" ${currentReferencesPage === totalPages ? 'disabled' : ''}>
-                ${translations[currentLang].references.next} <i class="fas fa-chevron-right"></i>
+                ${translations[currentLang].references.next} <i class="pi pi-chevron-right"></i>
             </button>
         </div>
     `;
@@ -437,17 +407,17 @@ function toggleReferences() {
 
     if (referencesContent.style.display === 'none') {
         referencesContent.style.display = 'block';
-        toggleIcon.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        toggleIcon.innerHTML = '<i class="pi pi-chevron-up"></i>';
         renderReferencesPage();
     } else {
         referencesContent.style.display = 'none';
-        toggleIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        toggleIcon.innerHTML = '<i class="pi pi-chevron-down"></i>';
     }
 }
 
 function updateTocActive() {
     const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.toc a, .mobile-nav-links a');
+    const links = document.querySelectorAll('.toc a, .mobile-nav-links a, .fixed-header .nav-links a');
     if (sections.length === 0) return;
 
     const focalPoint = window.innerHeight * 0.35;
@@ -469,10 +439,11 @@ function updateTocActive() {
     }
 
     links.forEach(link => {
-        link.classList.remove('active');
+        link.classList.remove('active', 'active-nav');
         const href = link.getAttribute('href');
         if (href && href === `#${currentSection}`) {
             link.classList.add('active');
+            if (link.closest('.fixed-header')) link.classList.add('active-nav');
         }
     });
 }
@@ -509,10 +480,16 @@ function updateThemeButtons() {
     }
 }
 
-function syncLanguageSelects(sourceSelect, targetSelect, value) {
-    if (targetSelect) targetSelect.value = value;
+function applyTheme(isDark) {
+    document.body.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeButtons();
+}
+
+function syncLanguage(value) {
     currentLang = value;
     localStorage.setItem('selectedLang', value);
+    if (langSelectFixed) langSelectFixed.value = value;
     renderFullArticle();
     updateUITexts(value);
     updatePaginationTexts(value);
@@ -522,15 +499,7 @@ function syncLanguageSelects(sourceSelect, targetSelect, value) {
 function initLanguageSelects() {
     if (langSelectFixed) {
         langSelectFixed.addEventListener('change', (e) => {
-            if (langSelect) langSelect.value = e.target.value;
-            syncLanguageSelects(langSelectFixed, langSelect, e.target.value);
-        });
-    }
-
-    if (langSelect) {
-        langSelect.addEventListener('change', (e) => {
-            if (langSelectFixed) langSelectFixed.value = e.target.value;
-            syncLanguageSelects(langSelect, langSelectFixed, e.target.value);
+            syncLanguage(e.target.value);
         });
     }
 }
@@ -546,16 +515,10 @@ function initTheme() {
     });
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
-    }
-
     if (themeToggleFixed) {
         themeToggleFixed.addEventListener('click', () => {
-            if (themeToggle) themeToggle.click();
+            const isDark = document.body.classList.contains('dark');
+            applyTheme(!isDark);
         });
     }
 }
@@ -620,7 +583,7 @@ function initPdfButtons() {
 }
 
 function initTocSmoothScroll() {
-    document.querySelectorAll('.toc a').forEach(link => {
+    document.querySelectorAll('.toc a, .fixed-header .nav-links a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const target = link.getAttribute('href').slice(1);
@@ -631,7 +594,6 @@ function initTocSmoothScroll() {
 }
 
 function init() {
-    if (langSelect) langSelect.value = currentLang;
     if (langSelectFixed) langSelectFixed.value = currentLang;
 
     renderFullArticle();

@@ -198,14 +198,14 @@ const pt = {
     <thead>
         <tr><th>Plataforma</th><th>Dispositivo</th><th>Acessibilidade</th><th>Desempenho</th><th>Práticas Recomendadas</th><th>SEO</th><th>Core Web Vitals (LCP / INP / CLS)</th></tr>
     </thead>
-    <tbody>
-        <tr><td rowspan="2">Ada Health</td><td>Computador</td><td>96</td><td>98</td><td>93</td><td>100</td><td>LCP: 1.6s<br>INP: 51ms<br>CLS: 0.11</td></tr>
-        <tr><td>Celular</td><td>96</td><td>79</td><td>100</td><td>100</td><td>LCP: 2.2s<br>INP: 130ms<br>CLS: 0.09</td></tr>
-        <tr><td rowspan="2">Molly (Sensely)</td><td>Computador</td><td>76</td><td>75</td><td>100</td><td>77</td><td>LCP: 3.2s<br>INP: 79ms<br>CLS: 0.01</td></tr>
-        <tr><td>Celular</td><td>79</td><td>71</td><td>100</td><td>77</td><td>LCP: 3.2s<br>INP: 271ms<br>CLS: 0.08</td></tr>
-        <tr><td rowspan="2">Symptomate</td><td>Computador</td><td>65</td><td>90</td><td>100</td><td>92</td><td>LCP: 3.4s<br>INP: 76ms<br>CLS: 0.05</td></tr>
-        <tr><td>Celular</td><td>60</td><td>90</td><td>100</td><td>92</td><td>LCP: 4s<br>INP: 195ms<br>CLS: 0.32</td></tr>
-    </tbody>
+<tbody>
+    <tr><td rowspan="2">Ada Health</td><td>Computador</td><td>96</td><td>98</td><td>93</td><td>100</td><td class="cwv-cell"><strong>LCP:</strong> 1.6s<br><strong>INP:</strong> 51ms<br><strong>CLS:</strong> 0.11</td></tr>
+    <tr><td>Celular</td><td>96</td><td>79</td><td>100</td><td>100</td><td class="cwv-cell"><strong>LCP:</strong> 2.2s<br><strong>INP:</strong> 130ms<br><strong>CLS:</strong> 0.09</td></tr>
+    <tr><td rowspan="2">Molly (Sensely)</td><td>Computador</td><td>76</td><td>75</td><td>100</td><td>77</td><td class="cwv-cell"><strong>LCP:</strong> 3.2s<br><strong>INP:</strong> 79ms<br><strong>CLS:</strong> 0.01</td></tr>
+    <tr><td>Celular</td><td>79</td><td>71</td><td>100</td><td>77</td><td class="cwv-cell"><strong>LCP:</strong> 3.2s<br><strong>INP:</strong> 271ms<br><strong>CLS:</strong> 0.08</td></tr>
+    <tr><td rowspan="2">Symptomate</td><td>Computador</td><td>65</td><td>90</td><td>100</td><td>92</td><td class="cwv-cell"><strong>LCP:</strong> 3.4s<br><strong>INP:</strong> 76ms<br><strong>CLS:</strong> 0.05</td></tr>
+    <tr><td>Celular</td><td>60</td><td>90</td><td>100</td><td>92</td><td class="cwv-cell"><strong>LCP:</strong> 4s<br><strong>INP:</strong> 195ms<br><strong>CLS:</strong> 0.32</td></tr>
+</tbody>
 </table>
 </div>
 <div class="table-source"><strong>Fonte:</strong> Autores, (2025).</div>
