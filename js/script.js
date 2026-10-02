@@ -187,6 +187,16 @@ function updateUITexts(lang) {
         heroMetaHighlight.innerHTML = `<i class="fas fa-award"></i> ${t.hero.status}`;
     }
 
+    const heroMetaBtn = document.querySelector('.hero-meta-btn');
+    if (heroMetaBtn) {
+        heroMetaBtn.innerHTML = `${t.hero.verRevista} <i class="fas fa-arrow-up-right-from-square"></i>`;
+    }
+
+    const footerBadgeBtn = document.querySelector('.footer-badge-btn');
+    if (footerBadgeBtn) {
+        footerBadgeBtn.innerHTML = `${t.hero.verRevista} <i class="fas fa-arrow-up-right-from-square"></i>`;
+    }
+
     const fixedHeaderTitle = document.getElementById('fixedHeaderTitle');
     if (fixedHeaderTitle) {
         fixedHeaderTitle.innerText = t.hero.titulo.replace('<br>', ' ');
@@ -268,8 +278,8 @@ function updateUITexts(lang) {
         }
     });
 
-    const footerLinks = document.querySelectorAll('.footer-links li a');
-    const footerLinkKeys = ['resumoArtigo', 'metodologia', 'resultados', 'referencias'];
+const footerLinks = document.querySelectorAll('.footer-links li a');
+const footerLinkKeys = ['resumoArtigo', 'metodologia', 'resultados', 'referencias', 'revistaPerspectiva'];
     footerLinks.forEach((link, i) => {
         if (footerLinkKeys[i]) {
             link.innerHTML = `<i class="pi pi-arrow-right"></i> ${t.footer[footerLinkKeys[i]]}`;

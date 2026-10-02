@@ -5,7 +5,8 @@ const es = {
         titulo: "Entre la tecnología y el cuidado:<br>análisis comparativo estructurado de chatbots en salud digital",
         subtitulo: "Ada Health · Molly (Sensely) · Symptomate — precisión diagnóstica, LGPD, usabilidad y lenguaje natural.",
         badge: "Artículo Científico",
-        status: "Aceptado por la revista académica de FATEC Itapetininga"
+        status: "Aceptado por la revista académica de FATEC Itapetininga",
+        verRevista: "Ver Revista"
     },
     nav: {
         resumo: "Resumen",
@@ -51,7 +52,8 @@ const es = {
         resumoArtigo: "Resumen del artículo",
         metodologia: "Metodología",
         resultados: "Resultados",
-        referencias: "Referencias"
+        referencias: "Referencias",
+        revistaPerspectiva: "Ver Revista"
     },
     references: {
         title: "REFERENCIAS",
