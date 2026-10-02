@@ -31,7 +31,7 @@ const es = {
         autor2: "Matheus Bilitardo Abib",
         autor3: "Luciano Gonçalves de Carvalho",
         tempoLeitura: "18",
-        minLeitura: "min de lectura",
+        minLeitura: "minutos de lectura",
         instituicao: "FATEC Mogi das Cruzes · 2025"
     },
     buttons: {
