@@ -46,6 +46,7 @@ const pdfModalIframe = document.getElementById('pdfModalIframe');
 const pdfModalClose = document.getElementById('pdfModalClose');
 
 const downloadPdfFooterBtn = document.getElementById('downloadPdfFooterBtn');
+const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
 
 if (langSelect) langSelect.value = currentLang;
 if (langSelectFixed) langSelectFixed.value = currentLang;
@@ -83,12 +84,17 @@ function showToast(msg, type = 'success') {
 }
 
 function openPdfModal(pdfPath) {
+    if (isMobile) {
+        window.open(pdfPath, '_blank');
+        return;
+    }
+
     if (!pdfModal || !pdfModalIframe) return;
 
     const loader = document.getElementById('pdfModalLoader');
     if (loader) loader.classList.remove('hidden');
 
-    const viewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent(pdfPath)}`;
+    const viewerUrl = `pdfjs/web/viewer.html?file=${encodeURIComponent('../../' + pdfPath)}`;
     pdfModalIframe.src = viewerUrl;
     pdfModal.classList.add('open');
     pdfModal.setAttribute('aria-hidden', 'false');
@@ -580,19 +586,25 @@ function initCitations() {
 function initPdfButtons() {
     if (downloadPdfBtn) {
         downloadPdfBtn.addEventListener('click', () => {
-            openPdfModal('../../docs/Artigo-Cientifico.pdf');
+            openPdfModal('docs/Artigo-Cientifico.pdf');
+        });
+    }
+
+    if (downloadPdfFooterBtn) {
+        downloadPdfFooterBtn.addEventListener('click', () => {
+            openPdfModal('docs/Artigo-Cientifico.pdf');
         });
     }
 
     if (openLetterBtn) {
         openLetterBtn.addEventListener('click', () => {
-            openPdfModal('../../docs/DECLARACAO_ACEITE.pdf');
+            openPdfModal('docs/DECLARACAO_ACEITE.pdf');
         });
     }
 
     if (openLetterFooterBtn) {
         openLetterFooterBtn.addEventListener('click', () => {
-            openPdfModal('../../docs/DECLARACAO_ACEITE.pdf');
+            openPdfModal('docs/DECLARACAO_ACEITE.pdf');
         });
     }
 }

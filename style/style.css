@@ -78,7 +78,7 @@ body {
     font-size: clamp(1.9rem, 4.5vw, 2.6rem);
     font-weight: 700;
     line-height: 1.25;
-    margin: 1.5rem 0 1rem;
+    margin: 1rem 0 1rem;
     letter-spacing: -0.02em;
     color: var(--text);
 }
@@ -957,7 +957,7 @@ h3 i {
     .hero-container,
     .footer-content,
     .fixed-header .fixed-header-content {
-        max-width: 97%;
+        max-width: 94%;
     }
 }
 
@@ -1129,6 +1129,10 @@ h3 i {
 }
 
 @media (max-width: 768px) {
+    .authors{
+        flex-direction: column;
+    }
+
     .btn-icon,
     .lang-select,
     .fixed-header .btn-icon-small,
@@ -1298,9 +1302,6 @@ h3 i {
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 2rem 0.5rem;
-    }
 
     .hero h1 {
         font-size: 1.3rem;
@@ -1344,5 +1345,12 @@ h3 i {
     td {
         padding: 0.5rem;
         font-size: 0.75rem;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .controls {
+        flex-direction: column;
     }
 }
