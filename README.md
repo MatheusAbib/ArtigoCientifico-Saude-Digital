@@ -13,11 +13,13 @@
 
 Este projeto consiste em um **artigo acadêmico digital interativo** que realiza uma análise comparativa estruturada de três das principais plataformas de chatbots utilizadas na área da saúde. O conteúdo aborda aspectos como precisão diagnóstica, conformidade com a LGPD, satisfação dos usuários, acessibilidade técnica e compreensão de linguagem natural.
 
-> 🔗 **Acesse online:** (https://matheusabib.github.io/ArtigoCientifico-Saude-Digital/)
+---
 
-> 📄 **Artigo em PDF:** (docs/Artigo-Cientifico.pdf)
+🔗 **Acesse online:** [Visualizar Artigo](https://matheusabib.github.io/ArtigoCientifico-Saude-Digital/)
 
-> 📑 **Carta de Aceite:** (docs/DECLARACAO_ACEITE.pdf)
+📄 **Artigo em PDF:** [Abrir PDF](https://github.com/matheusabib/ArtigoCientifico-Saude-Digital/blob/main/docs/Artigo-Cientifico.pdf)
+
+📑 **Carta de Aceite:** [Abrir Carta de Aceite](https://github.com/matheusabib/ArtigoCientifico-Saude-Digital/blob/main/docs/DECLARACAO_ACEITE.pdf)
 
 ---
 
